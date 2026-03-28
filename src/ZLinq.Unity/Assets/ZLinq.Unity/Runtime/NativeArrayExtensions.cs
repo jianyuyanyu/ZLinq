@@ -92,7 +92,10 @@ namespace ZLinq.Linq
 
         public bool TryGetSpan(out ReadOnlySpan<T> span)
         {
-#if UNITY_2022_1_OR_NEWER
+#if UNITY_6000_5_OR_NEWER
+            span = source.AsReadOnlySpan();
+            return true;
+#elif UNITY_2022_1_OR_NEWER
             span = source;
             return true;
 #else
